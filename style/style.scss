@@ -1,0 +1,221 @@
+@import 'SCSS - Partials/_colors.scss';
+
+@mixin font($weight) {
+  font-family: "Outfit", sans-serif;
+  font-weight: $weight;
+}
+
+@mixin responsive-direction($direction-desktop, $direction-mobile) {
+  flex-direction: $direction-desktop;
+
+  @media (max-width: 768px) {
+    flex-direction: $direction-mobile;
+  }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background-color: $Pale-blue;
+
+    .container {
+        background-color: $White;
+        border-radius: 15px;
+        display: flex;
+        @include responsive-direction(row, column);
+
+        .result {
+            background: linear-gradient(
+                $Light-slate-blue, 
+                $Light-royal-blue
+            );
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 0 0 30px 30px;
+            
+            .result-title {
+                @include font(500);
+                font-size: 18px;
+                color: $Light-lavender;
+                margin-top: 20px;
+            }
+
+            .result-score {
+                margin-top: 20px;
+                width: 125px;
+                height: 125px;
+                background: linear-gradient(
+                    $Violet-blue,
+                    $Persian-blue
+                );
+                border-radius: 50%;
+                color: $White;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                .score {
+                    @include font(700);
+                    font-size: 50px;
+                    line-height: 1;
+                    margin-bottom: 15px;
+                }
+
+                .score-total {
+                    @include font(500);
+                    font-size: 14px;
+                    color: $Light-lavender;
+                }
+            }
+
+            h1 {
+                @include font(700);
+                font-size: 30px;
+                color: $White;
+            }
+
+            p {
+                @include font(500);
+                font-size: 18px;
+                color: $Light-lavender;
+                text-align: center;
+                margin: 0 30px 30px;
+            }
+        }
+
+        .summary {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            h2 {
+                @include font(700);
+                font-size: 18px;
+                color: $Dark-gray-blue;
+                margin-top: 1px;
+                margin-bottom: 10px;
+            }
+
+            .summary-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 15px;
+                background-color: $White;
+                border-radius: 10px;
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 15px;
+                }
+
+                &--reaction {
+                    background-color: $Light-red-20;
+
+                    .summary-item__reaction {
+                        color: $Light-red;
+                        margin-right: auto;
+                    }
+
+                    .summary-item__score {
+                        color: black;
+                        font-weight: 700;
+
+                        span {
+                            color: $Dark-gray-blue;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                &--memory {
+                    background-color: $Orangey-yellow-20;
+
+                    .summary-item__memory {
+                        color: $Orangey-yellow;
+                        margin-right: auto;
+                    }
+
+                    .summary-item__score {
+                        color: black;
+                        font-weight: 700;
+
+                        span {
+                            color: $Dark-gray-blue;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                &--verbal {
+                    background-color: $Green-teal-20;
+
+                    .summary-item__verbal {
+                        color: $Green-teal;
+                        margin-right: auto;
+                    }
+
+                    .summary-item__score {
+                        color: black;
+                        font-weight: 700;
+
+                        span {
+                            color: $Dark-gray-blue;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                &--visual {
+                    background-color: $Cobalt-blue-20;
+
+                    .summary-item__visual {
+                        color: $Cobalt-blue;
+                        margin-right: auto;
+                    }
+
+                    .summary-item__score {
+                        color: black;
+                        font-weight: 700;
+
+                        span {
+                            color: $Dark-gray-blue;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+
+            .continue-button {
+                @include font(500);
+                font-size: 18px;
+                background-color: $Dark-gray-blue;
+                color: $White;
+                border: none;
+                border-radius: 20px;
+                padding: 15px 0;
+                cursor: pointer;
+
+                &:hover {
+                    background: linear-gradient(
+                        $Light-slate-blue,
+                        $Light-royal-blue
+                    );
+                }
+            }
+        }
+    }
+}
+
+.attribution { 
+    @include font(700);
+    font-size: 10px; text-align: center;
+
+    a {
+        color: hsl(228, 45%, 44%);
+    }
+}
