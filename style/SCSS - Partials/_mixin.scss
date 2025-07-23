@@ -1,0 +1,80 @@
+@mixin font($weight) {
+  font-family: "Outfit", sans-serif;
+  font-weight: $weight;
+}
+
+@mixin responsive-direction($direction-desktop, $direction-mobile) {
+  @media (min-width: 619px) {
+    flex-direction: $direction-desktop;
+  }
+
+  @media (max-width: 618px) {
+    flex-direction: $direction-mobile;
+  }
+}
+
+@mixin responsive-resize($width-desktop, $width-mobile) {
+  @media (min-width: 619px) {
+    width: $width-desktop;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+  }
+
+  @media (max-width: 618px) {
+    width: $width-mobile;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (max-height: 740px) {
+      border-radius: 0 0 15px 15px;
+    }
+    @media (min-height: 800px) {
+      border-radius: 15px;
+    }
+
+  }
+}
+
+@mixin responsive-resize-summary($direction-desktop, $direction-mobile) {
+  @media (min-width: 619px) {
+    width: $direction-desktop;
+    height: $direction-desktop;
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (max-width: 618px) {
+    width: $direction-mobile;
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@mixin responsive-resize-result($width-desktop, $width-mobile) {
+  @media (min-width: 619px) {
+    width: $width-desktop;
+    height: $width-desktop;
+  }
+
+  @media (max-width: 618px) {
+    width: $width-mobile;
+    height: $width-mobile;
+  }
+}
+
+%span {
+    color: $Dark-gray-blue;
+    font-weight: 500;
+    margin-right: 10px;
+    margin-left: 5px;
+}

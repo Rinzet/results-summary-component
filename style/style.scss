@@ -1,23 +1,16 @@
 @import 'SCSS - Partials/_colors.scss';
-
-@mixin font($weight) {
-  font-family: "Outfit", sans-serif;
-  font-weight: $weight;
-}
-
-@mixin responsive-direction($direction-desktop, $direction-mobile) {
-  flex-direction: $direction-desktop;
-
-  @media (max-width: 768px) {
-    flex-direction: $direction-mobile;
-  }
-}
+@import 'SCSS - Partials/_mixin.scss';
 
 body {
     margin: 0;
     padding: 0;
     font-family: "Inter", sans-serif;
     background-color: $Pale-blue;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .container {
         background-color: $White;
@@ -27,13 +20,10 @@ body {
 
         .result {
             background: linear-gradient(
-                $Light-slate-blue, 
-                $Light-royal-blue
+            $Light-slate-blue, 
+            $Light-royal-blue
             );
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-radius: 0 0 30px 30px;
+            @include responsive-resize(300px, 100%);
             
             .result-title {
                 @include font(500);
@@ -43,9 +33,8 @@ body {
             }
 
             .result-score {
+                @include responsive-resize-result(150px, 125px);
                 margin-top: 20px;
-                width: 125px;
-                height: 125px;
                 background: linear-gradient(
                     $Violet-blue,
                     $Persian-blue
@@ -59,16 +48,33 @@ body {
                 text-align: center;
 
                 .score {
-                    @include font(700);
-                    font-size: 50px;
-                    line-height: 1;
-                    margin-bottom: 15px;
+                    @media (min-width: 619px) {
+                        @include font(700);
+                        margin-top: 5px;
+                        font-size: 60px;
+                        line-height: 0.5;
+                        margin-bottom: 15px;
+                    }
+
+                    @media (max-width: 618px) {
+                        @include font(700);
+                        font-size: 40px;
+                        line-height: 1;
+                        margin-bottom: 10px;
+                    }
                 }
 
                 .score-total {
-                    @include font(500);
-                    font-size: 14px;
-                    color: $Light-lavender;
+                    @media (min-width: 619px) {
+                        @include font(500);
+                        font-size: 20px;
+                        color: $Light-lavender;
+                    }
+                    @media (max-width: 618px) {
+                        @include font(500);
+                        font-size: 14px;
+                        color: $Light-lavender;
+                    }
                 }
             }
 
@@ -88,32 +94,56 @@ body {
         }
 
         .summary {
-            flex: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            @include responsive-resize-summary(240px, auto);
 
             h2 {
-                @include font(700);
-                font-size: 18px;
-                color: $Dark-gray-blue;
-                margin-top: 1px;
-                margin-bottom: 10px;
+                @media (min-width: 619px) {
+                    @include font(700);
+                    font-size: 24px;
+                    color: $Dark-gray-blue;
+                    margin-top: 1px;
+                    margin-bottom: 5px;
+                }
+                @media (max-width: 618px) {
+                    @include font(700);
+                    font-size: 18px;
+                    color: $Dark-gray-blue;
+                    margin-top: 1px;
+                    margin-bottom: 10px;
+                }
             }
 
             .summary-item {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 15px;
-                background-color: $White;
-                border-radius: 10px;
+                @media (min-width: 619px) {
+                    height: 15%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: $White;
+                    border-radius: 10px;
+                }
+                @media (max-width: 618px) {
+                    height: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 15px;
+                    background-color: $White;
+                    border-radius: 10px;
+                }
 
                 img {
-                    width: 24px;
-                    height: 24px;
-                    margin-right: 15px;
+                    @media (min-width: 619px) {
+                        width: 24px;
+                        height: 24px;
+                        margin-right: 10px;
+                        margin-left: 10px;
+                    }
+                    @media (max-width: 618px) {
+                        width: 24px;
+                        height: 24px;
+                        margin-right: 15px;
+                    }
                 }
 
                 &--reaction {
@@ -129,8 +159,7 @@ body {
                         font-weight: 700;
 
                         span {
-                            color: $Dark-gray-blue;
-                            font-weight: 500;
+                            @extend %span;
                         }
                     }
                 }
@@ -147,8 +176,7 @@ body {
                         font-weight: 700;
 
                         span {
-                            color: $Dark-gray-blue;
-                            font-weight: 500;
+                            @extend %span;
                         }
                     }
                 }
@@ -165,8 +193,7 @@ body {
                         font-weight: 700;
 
                         span {
-                            color: $Dark-gray-blue;
-                            font-weight: 500;
+                            @extend %span;
                         }
                     }
                 }
@@ -183,8 +210,7 @@ body {
                         font-weight: 700;
 
                         span {
-                            color: $Dark-gray-blue;
-                            font-weight: 500;
+                            @extend %span;
                         }
                     }
                 }
